@@ -82,8 +82,8 @@ if __name__ == "__main__":
     parser.add_argument("--noise-dim", type=int, default=100)
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--batch-size", type=int, default=128)
+    parser.add_argument("--dataset", type=str, default="/content/dataset")
     args = parser.parse_args()
-    args.dataset_path = f"/content/drive/MyDrive/data/gan/datasets/{args.image_size}/"
     args.channels_img = 3
     args.features_disc = 64
     args.features_gen = 64
