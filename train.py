@@ -1,5 +1,5 @@
 def main(args):
-    dataset = datasets.ImageFolder(root=args.dataset_path, transform=transforms)
+    dataset = datasets.ImageFolder(root=args.dataset, transform=transforms)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
     gen = Generator(args.noise_dim, args.channels_img, args.features_gen).to(device)
     disc = Discriminator(args.channels_img, args.features_disc).to(device)
