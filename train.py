@@ -1,8 +1,8 @@
 def main(args):
     dataset = datasets.ImageFolder(root=args.dataset_path, transform=transforms)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
-    gen = Generator(args.noise_dim, args.img_channels, args.features_gen).to(device)
-    disc = Discriminator(args.img_channels, args.features_disc).to(device)
+    gen = Generator(args.noise_dim, args.channels_img, args.features_gen).to(device)
+    disc = Discriminator(args.channels_img, args.features_disc).to(device)
     initialize_weights(gen)
     initialize_weights(disc)
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             transforms.ToTensor(),
             transforms.Normalize(
                 [0.5 for _ in range(args.channels_img)],
-                [0.5 for _ in range(args.img_channels)],
+                [0.5 for _ in range(args.channels_img)],
             ),
         ]
     )
