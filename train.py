@@ -94,7 +94,7 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--batch-size", type=int, default=128)
     args = parser.parse_args()
-    args.dataset_path = f"content/drive/MyDrive/data/gan/datasets/{args.size}"
+    args.dataset_path = f"/content/drive/MyDrive/data/gan/datasets/{args.size}"
     args.channels_img = 3
     args.features_disc = 64
     args.features_gen = 64
