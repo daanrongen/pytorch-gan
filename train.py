@@ -1,15 +1,4 @@
 def main(args):
-    transforms = transforms.Compose(
-        [
-            transforms.Resize(args.image_size),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                [0.5 for _ in range(args.channels_img)],
-                [0.5 for _ in range(args.img_channels)],
-            ),
-        ]
-    )
-
     dataset = datasets.ImageFolder(root=args.dataset_path, transform=transforms)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
     gen = Generator(args.noise_dim, args.img_channels, args.features_gen).to(device)
@@ -99,5 +88,16 @@ if __name__ == "__main__":
     args.features_disc = 64
     args.features_gen = 64
     args.learning_rate = 2e-4
+
+    transforms = transforms.Compose(
+        [
+            transforms.Resize(args.image_size),
+            transforms.ToTensor(),
+            transforms.Normalize(
+                [0.5 for _ in range(args.channels_img)],
+                [0.5 for _ in range(args.img_channels)],
+            ),
+        ]
+    )
 
     main(args)
