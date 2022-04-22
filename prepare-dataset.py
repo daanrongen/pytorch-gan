@@ -27,6 +27,6 @@ if __name__ == "__main__":
     parser.add_argument("--size", type=int, default=1024)
     args = parser.parse_args()
     args.dataset_path = "/content/drive/MyDrive/data/gan/images/teletext"
-    args.output_path = f"content/drive/MyDrive/data/gan/datasets/{args.size}"
+    args.output_path = f"/content/drive/MyDrive/data/gan/datasets/{args.size}"
 
     main(args)
