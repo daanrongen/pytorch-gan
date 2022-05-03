@@ -25,8 +25,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="GAN")
     parser.add_argument("--size", type=int, default=1024)
+    parser.add_argument("--indir", type=str, default="/content/drive/MyDrive/data/gan/images/in")
+    parser.add_argument("--outdir", type=str, default="/content/drive/MyDrive/data/gan/images/out")
     args = parser.parse_args()
-    args.dataset_path = "/content/drive/MyDrive/data/gan/images/teletext"
-    args.output_path = f"/content/drive/MyDrive/data/gan/datasets/{args.size}"
 
     main(args)
