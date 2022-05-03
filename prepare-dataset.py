@@ -4,7 +4,7 @@ import argparse
 import os
 from tqdm import tqdm
 
-from utils import remove_frames, center_crop, random_flip
+from utils import remove_frames, center_crop, flip
 
 def main(args):
     images = glob.glob(f"{args.indir}/*.*")
@@ -18,15 +18,15 @@ def main(args):
         )
         image = remove_frames(image)
         image = center_crop(image, args.size)
-        augmented = random_flip(image)
+        flipped = flip(image)
         
         assert image.size == (args.size, args.size)
         assert image.mode == "RGB"
-        assert augmented.size == (args.size, args.size)
-        assert augmented.mode == "RGB"
+        assert flipped.size == (args.size, args.size)
+        assert flipped.mode == "RGB"
 
         image.save(f"{args.outdir}/{i:04d}.png", "PNG", quality=100)
-        augmented.save(f"{args.outdir}/{i:04d}-aug.png", "PNG", quality=100)
+        flipped.save(f"{args.outdir}/{i:04d}-flip.png", "PNG", quality=100)
 
 
 if __name__ == "__main__":
