@@ -7,6 +7,11 @@ import math
 import glob
 
 
+def random_flip(image):
+    image = image.transpose(random.choice([Image.FLIP_LEFT_RIGHT, Image.TRANSVERSE, Image.TRANSPOSE]))
+    return image
+
+
 def center_crop(image, size):
     w, h = image.size
     left = (w - size) / 2
