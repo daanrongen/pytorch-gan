@@ -7,8 +7,8 @@ from tqdm import tqdm
 from utils import remove_frames, center_crop, random_flip
 
 def main(args):
-    images = glob.glob(f"{args.dataset_path}/*.*")
-    os.makedirs(args.output_path, exist_ok=True)
+    images = glob.glob(f"{args.indir}/*.*")
+    os.makedirs(args.outdir, exist_ok=True)
 
     for i, infile in tqdm(enumerate(images)):
         image = (
@@ -25,8 +25,8 @@ def main(args):
         assert augmented.size == (args.size, args.size)
         assert augmented.mode == "RGB"
 
-        image.save(f"{args.output_path}/{i:04d}.png", "PNG", quality=100)
-        augmented.save(f"{args.output_path}/{i:04d}-aug.png", "PNG", quality=100)
+        image.save(f"{args.outdir}/{i:04d}.png", "PNG", quality=100)
+        augmented.save(f"{args.outdir}/{i:04d}-aug.png", "PNG", quality=100)
 
 
 if __name__ == "__main__":
