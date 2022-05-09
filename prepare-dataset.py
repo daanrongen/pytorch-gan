@@ -21,13 +21,13 @@ def main(args):
 
         assert image.size == (args.size, args.size)
         assert image.mode == "RGB"
-        image.save(f"{args.outdir}/{i:04d}.png", "PNG", quality=100)
+        image.save(f"{args.outdir}/{i:06d}.png", "PNG", quality=100)
 
         if args.flip:
             flipped = flip(image)
             assert flipped.size == (args.size, args.size)
             assert flipped.mode == "RGB"
-            flipped.save(f"{args.outdir}/{i:04d}-flip.png", "PNG", quality=100)
+            flipped.save(f"{args.outdir}/{i:06d}-flip.png", "PNG", quality=100)
 
 
 if __name__ == "__main__":
