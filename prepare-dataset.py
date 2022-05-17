@@ -6,6 +6,9 @@ from tqdm import tqdm
 
 from utils import remove_frames, center_crop, flip
 
+def crop_max_square(pil_img):
+    return crop_center(pil_img, min(pil_img.size), min(pil_img.size))
+
 def main(args):
     images = glob.glob(f"{args.indir}/*.*")
     os.makedirs(args.outdir, exist_ok=True)
@@ -17,7 +20,7 @@ def main(args):
             # .resize((args.size, args.size), Image.LANCZOS)
         )
 
-        image = image.thumbnail((args.size, args.size))
+        image = crop_max_square(image).resize((args.size, args.size), Image.LANCZOS)
         # image = remove_frames(image)
         # image = center_crop(image, args.size)
 
