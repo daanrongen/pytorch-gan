@@ -15,7 +15,6 @@ def main(args):
             Image.open(infile)
             .convert("RGB")
             # .resize((args.size, args.size), Image.LANCZOS)
-            )
         )
 
         image = image.thumbnail((args.size, args.size)
