@@ -15,8 +15,10 @@ def main(args):
             Image.open(infile)
             .convert("RGB")
             # .resize((args.size, args.size), Image.LANCZOS)
-            .thumbnail((args.size, args.size))
+            )
         )
+
+        image = image.thumbnail((args.size, args.size)
         # image = remove_frames(image)
         # image = center_crop(image, args.size)
 
