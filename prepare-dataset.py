@@ -17,7 +17,7 @@ def main(args):
             # .resize((args.size, args.size), Image.LANCZOS)
         )
 
-        image = image.thumbnail((args.size, args.size)
+        image = image.thumbnail((args.size, args.size))
         # image = remove_frames(image)
         # image = center_crop(image, args.size)
 
