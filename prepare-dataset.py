@@ -6,15 +6,15 @@ from tqdm import tqdm
 
 from utils import remove_frames, center_crop, flip
 
-def crop_center(pil_img, crop_width, crop_height):
-    img_width, img_height = pil_img.size
-    return pil_img.crop(((img_width - crop_width) // 2,
-                         (img_height - crop_height) // 2,
-                         (img_width + crop_width) // 2,
-                         (img_height + crop_height) // 2))
+# def crop_center(pil_img, crop_width, crop_height):
+#     img_width, img_height = pil_img.size
+#     return pil_img.crop(((img_width - crop_width) // 2,
+#                          (img_height - crop_height) // 2,
+#                          (img_width + crop_width) // 2,
+#                          (img_height + crop_height) // 2))
 
-def crop_max_square(pil_img):
-    return crop_center(pil_img, min(pil_img.size), min(pil_img.size))
+# def crop_max_square(pil_img):
+#     return crop_center(pil_img, min(pil_img.size), min(pil_img.size))
 
 def main(args):
     images = glob.glob(f"{args.indir}/*.*")
@@ -24,12 +24,12 @@ def main(args):
         image = (
             Image.open(infile)
             .convert("RGB")
-            # .resize((args.size, args.size), Image.LANCZOS)
+            .resize((args.size, args.size), Image.LANCZOS)
         )
 
-        image = crop_max_square(image).resize((args.size, args.size), Image.LANCZOS)
-        # image = remove_frames(image)
-        # image = center_crop(image, args.size)
+        # image = crop_max_square(image).resize((args.size, args.size), Image.LANCZOS)
+        image = remove_frames(image)
+        image = center_crop(image, args.size)
 
         assert image.size == (args.size, args.size)
         assert image.mode == "RGB"
