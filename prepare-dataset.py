@@ -13,10 +13,9 @@ def main(args):
 
     for i, infile in tqdm(enumerate(images)):
         image = cv2.imread(infile)
-        print(image.shape)
-
         image = cv2.resize(image, (args.size, args.size), cv2.INTER_CUBIC)
-        print(image.shape)
+
+        assert image.shape = (args.size, args.size, 3)
 
         cv2.imwrite(f"{args.outdir}/{i:06d}-0.png", image)
 
