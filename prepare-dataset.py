@@ -15,7 +15,7 @@ def main(args):
         image = cv2.imread(infile)
         image = cv2.resize(image, (args.size, args.size), cv2.INTER_CUBIC)
 
-        assert image.shape = (args.size, args.size, 3)
+        assert image.shape == (args.size, args.size, 3)
 
         cv2.imwrite(f"{args.outdir}/{i:06d}-0.png", image)
 
